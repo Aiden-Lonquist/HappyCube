@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMouseDetection : MonoBehaviour
 {
-    public GameObject platformTimeMap;
+    public GameObject platformTimeMap, tilemap2, tilemap3;
     private bool isMouseOver, isPlayerColliding;
     // Start is called before the first frame update
     void Start()
@@ -18,13 +18,28 @@ public class PlayerMouseDetection : MonoBehaviour
     {
         if (isMouseOver && !isPlayerColliding)
         {
-            platformTimeMap.GetComponent<TilemapCollider2D>().enabled = true;
-            platformTimeMap.GetComponent<Tilemap>().color = new Color(1, 1, 1, 1);
+            EnableTileMap(platformTimeMap);
+            EnableTileMap(tilemap2);
+            EnableTileMap(tilemap3);
         } else if (platformTimeMap.GetComponent<TilemapCollider2D>().enabled)
         {
-            platformTimeMap.GetComponent<TilemapCollider2D>().enabled = false;
-            platformTimeMap.GetComponent<Tilemap>().color = new Color(1, 1, 1, 0.3f);
+            DisableTileMap(platformTimeMap);
+            DisableTileMap(tilemap2);
+            DisableTileMap(tilemap3);
         }
+    }
+
+
+    private void EnableTileMap(GameObject tm)
+    {
+        tm.GetComponent<TilemapCollider2D>().enabled = true;
+        tm.GetComponent<Tilemap>().color = new Color(1, 1, 1, 1);
+    }
+
+    private void DisableTileMap(GameObject tm)
+    {
+        tm.GetComponent<TilemapCollider2D>().enabled = false;
+        tm.GetComponent<Tilemap>().color = new Color(1, 1, 1, 0.3f);
     }
 
     public void SetIsPlayerColliding(bool playerColliding)

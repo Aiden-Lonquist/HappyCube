@@ -55,6 +55,7 @@ public class CharacterCustomizationScript : MonoBehaviour
 
     public void UpdateEyes(bool rightPressed)
     {
+        Debug.Log("Eyes Button Pressed!");
         if (rightPressed)
         {
             curEyesIndex = (curEyesIndex + 1) % eyesList.Count;
@@ -74,6 +75,7 @@ public class CharacterCustomizationScript : MonoBehaviour
 
     public void UpdateMouth(bool rightPressed)
     {
+        Debug.Log("Mouth Button Pressed!");
         if (rightPressed)
         {
             curMouthIndex = (curMouthIndex + 1) % mouthList.Count;
@@ -94,6 +96,7 @@ public class CharacterCustomizationScript : MonoBehaviour
 
     public void UpdateColour(bool rightPressed)
     {
+        Debug.Log("Colour Button Pressed!");
         if (rightPressed)
         {
             curColourIndex = (curColourIndex + 1) % colourList.Count;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// this script is for the trigger colliders of the platforms not the actual rendered platforms!
+// this script is not responsible for anything other than discrete collision detection and "player-in-block" prevention.
 public class GamePlatformsScript : MonoBehaviour
 {
     public GameObject player;
