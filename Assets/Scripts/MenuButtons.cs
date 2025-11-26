@@ -18,7 +18,7 @@ public class MenuButtons : MonoBehaviour
 
     public void StartButtonPressed()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("LevelDesignScene");
     }
 
     public void CustomizeCharacterPressed()

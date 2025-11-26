@@ -7,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float speed, jumpForce;
     public bool isGrounded;
+    public bool useForceMovement;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (useForceMovement)
+        {
+            speed *= 100;
+        }
     }
 
     // Update is called once per frame
@@ -18,14 +22,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = GroundedCheck();
 
-        if (!isGrounded)
-        {
-            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
-        }
-
+        //HorizontalMovement();
+        HorizontalMovementNoGroundedCheck();
+        
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            // using jump force of 825 with gravity scale 3 for most testing (can use 750 and 2.5 for easier game)
             rb.AddForce(new Vector2(0, jumpForce));
         }
 
@@ -33,10 +36,43 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("This is get axis raw" + Input.GetAxisRaw("Horizontal"));
 
         // maximum fall velocity
-        if (rb.velocity.y < -50)
+        if (rb.velocity.y < -25)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -50);
+            rb.velocity = new Vector2(rb.velocity.x, -25);
         }
+    }
+
+    private void HorizontalMovement()
+    {
+        if (!isGrounded)
+        {
+            if (!useForceMovement)
+            {
+                // constant movement
+                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+            }
+            else
+            {
+                // force dependant movement
+                float horizontal = Input.GetAxisRaw("Horizontal");
+                rb.AddForce(new Vector2(horizontal * speed * Time.deltaTime, 0));
+            }
+        }
+    }
+
+    private void HorizontalMovementNoGroundedCheck()
+    {
+        if (!useForceMovement)
+        {
+            // constant movement
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        }
+        else
+        {
+            // force dependant movement
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            rb.AddForce(new Vector2(horizontal * speed * Time.deltaTime, 0));
+        } 
     }
 
     private bool GroundedCheck()

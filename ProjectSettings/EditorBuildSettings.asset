@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CustomizeCharacterScene.unity
     guid: d745fadfb40555b46a1184fe356f4ef6
+  - enabled: 1
+    path: Assets/Scenes/LevelDesignScene.unity
+    guid: 89beb6ad3c9174e44b86f2de40f5bcec
   m_configObjects: {}
