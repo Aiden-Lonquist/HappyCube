@@ -916,23 +916,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyesList:
-  - name: Neutral
-    image: {fileID: 1468368486, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Arngy
-    image: {fileID: 948603091, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Scared
-    image: {fileID: 648356060, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Wink
-    image: {fileID: -1943240970, guid: f386af819c571a447a59821238990c34, type: 3}
+  - name: 1
+    image: {fileID: -1578024116, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 2
+    image: {fileID: -1543857721, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 3
+    image: {fileID: 2132230329, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 4
+    image: {fileID: -845383766, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 5
+    image: {fileID: -1281678958, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 6
+    image: {fileID: 1237992089, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 7
+    image: {fileID: 268044724, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 8
+    image: {fileID: 1550417240, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 9
+    image: {fileID: 23846292, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 10
+    image: {fileID: 1039246664, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 11
+    image: {fileID: 465111380, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
+  - name: 12
+    image: {fileID: -513830784, guid: 7af667bec35e79145a95e3ba0374a07e, type: 3}
   mouthList:
-  - name: Happy
-    image: {fileID: 1603850235, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Angry
-    image: {fileID: 619589847, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Sad
-    image: {fileID: 1135880315, guid: f386af819c571a447a59821238990c34, type: 3}
-  - name: Yell
-    image: {fileID: -550841137, guid: f386af819c571a447a59821238990c34, type: 3}
+  - name: 1
+    image: {fileID: -1975679070, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 2
+    image: {fileID: -1103843106, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 3
+    image: {fileID: 1429825014, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 4
+    image: {fileID: -747964013, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 5
+    image: {fileID: -576021533, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 6
+    image: {fileID: -1267905009, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 7
+    image: {fileID: 1663172677, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 8
+    image: {fileID: 735333, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 9
+    image: {fileID: -744503657, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 10
+    image: {fileID: -255584523, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 11
+    image: {fileID: -1323726338, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
+  - name: 12
+    image: {fileID: 1045533855, guid: 25a4c4c46c83cde4985a77498e39d677, type: 3}
   colourList:
   - name: Red
     colour: {r: 0.9098039, g: 0.078431375, b: 0.08627451, a: 1}
