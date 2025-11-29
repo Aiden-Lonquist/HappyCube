@@ -13,9 +13,10 @@ public class PlayerMouseDetection : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // Update is called once per frame 
+    void FixedUpdate()
     {
+        // I don't know if I should use fixed update or normal update here...
         if (isMouseOver && !isPlayerColliding)
         {
             EnableTileMap(platformTimeMap);
