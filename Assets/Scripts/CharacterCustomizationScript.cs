@@ -19,8 +19,14 @@ public class CharacterColour
 
 public class CharacterCustomizationScript : MonoBehaviour
 {
-    public List<CharacterImage> eyesList = new List<CharacterImage>();
-    public List<CharacterImage> mouthList = new List<CharacterImage>();
+    // for testing if I can autoload sprites.
+    private string eyeSpriteSheet = "Art/HappyCubeEyes";
+    private string mouthSpriteSheet = "Art/HappyCubeMouths";
+    public Sprite[] eyeSprites;
+    public Sprite[] mouthSprites;
+
+    //public List<CharacterImage> eyesList = new List<CharacterImage>();
+    //public List<CharacterImage> mouthList = new List<CharacterImage>();
     public List<CharacterColour> colourList = new List<CharacterColour>();
 
     public TextMeshProUGUI eyesText, mouthText, colourText;
@@ -34,16 +40,21 @@ public class CharacterCustomizationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // for testing if I can auto load sprites
+        eyeSprites = Resources.LoadAll<Sprite>(eyeSpriteSheet);
+        mouthSprites = Resources.LoadAll<Sprite>(mouthSpriteSheet);
+
         curEyesIndex = PlayerPrefs.GetInt("EyesIndex");
         curMouthIndex = PlayerPrefs.GetInt("MouthIndex");
         curColourIndex = PlayerPrefs.GetInt("ColourIndex");
 
-        eyesText.text = eyesList[curEyesIndex].name;
-        mouthText.text = mouthList[curMouthIndex].name;
+        // may need to replace with just index OR no name at all...
+        eyesText.text = curEyesIndex.ToString();
+        mouthText.text = curMouthIndex.ToString();
         colourText.text = colourList[curColourIndex].name;
 
-        characterEyes.GetComponent<SpriteRenderer>().sprite = eyesList[curEyesIndex].image;
-        characterMouth.GetComponent<SpriteRenderer>().sprite = mouthList[curMouthIndex].image;
+        characterEyes.GetComponent<SpriteRenderer>().sprite = eyeSprites[curEyesIndex];
+        characterMouth.GetComponent<SpriteRenderer>().sprite = mouthSprites[curMouthIndex];
         characterModel.GetComponent<SpriteRenderer>().color = colourList[curColourIndex].colour;
     }
 
@@ -58,18 +69,18 @@ public class CharacterCustomizationScript : MonoBehaviour
         Debug.Log("Eyes Button Pressed!");
         if (rightPressed)
         {
-            curEyesIndex = (curEyesIndex + 1) % eyesList.Count;
+            curEyesIndex = (curEyesIndex + 1) % eyeSprites.Length;
         } else
         {
             curEyesIndex--;
             if (curEyesIndex < 0)
             {
-                curEyesIndex = eyesList.Count-1;
+                curEyesIndex = eyeSprites.Length-1;
             }
         }
 
-        eyesText.text = eyesList[curEyesIndex].name;
-        characterEyes.GetComponent<SpriteRenderer>().sprite = eyesList[curEyesIndex].image;
+        eyesText.text = curEyesIndex.ToString();
+        characterEyes.GetComponent<SpriteRenderer>().sprite = eyeSprites[curEyesIndex];
         PlayerPrefs.SetInt("EyesIndex", curEyesIndex);
     }
 
@@ -78,19 +89,19 @@ public class CharacterCustomizationScript : MonoBehaviour
         Debug.Log("Mouth Button Pressed!");
         if (rightPressed)
         {
-            curMouthIndex = (curMouthIndex + 1) % mouthList.Count;
+            curMouthIndex = (curMouthIndex + 1) % mouthSprites.Length;
         }
         else
         {
             curMouthIndex--;
             if (curMouthIndex < 0)
             {
-                curMouthIndex = mouthList.Count - 1;
+                curMouthIndex = mouthSprites.Length - 1;
             }
         }
 
-        mouthText.text = mouthList[curMouthIndex].name;
-        characterMouth.GetComponent<SpriteRenderer>().sprite = mouthList[curMouthIndex].image;
+        mouthText.text = curMouthIndex.ToString();
+        characterMouth.GetComponent<SpriteRenderer>().sprite = mouthSprites[curMouthIndex];
         PlayerPrefs.SetInt("MouthIndex", curMouthIndex);
     }
 
