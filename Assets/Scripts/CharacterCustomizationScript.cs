@@ -1,3 +1,5 @@
+/// this script is attached to the buttons in the character customization scene and used to change and save the selected cosmetics
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +42,8 @@ public class CharacterCustomizationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // loading sprites for customization screen here
+
         // for testing if I can auto load sprites
         eyeSprites = Resources.LoadAll<Sprite>(eyeSpriteSheet);
         mouthSprites = Resources.LoadAll<Sprite>(mouthSpriteSheet);
@@ -49,10 +53,12 @@ public class CharacterCustomizationScript : MonoBehaviour
         curColourIndex = PlayerPrefs.GetInt("ColourIndex");
 
         // may need to replace with just index OR no name at all...
+        // this is just loading the names of the current customizations for the UI
         eyesText.text = curEyesIndex.ToString();
         mouthText.text = curMouthIndex.ToString();
         colourText.text = colourList[curColourIndex].name;
 
+        // setting the image for the UI
         characterEyes.GetComponent<SpriteRenderer>().sprite = eyeSprites[curEyesIndex];
         characterMouth.GetComponent<SpriteRenderer>().sprite = mouthSprites[curMouthIndex];
         characterModel.GetComponent<SpriteRenderer>().color = colourList[curColourIndex].colour;

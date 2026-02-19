@@ -1,3 +1,5 @@
+/// this script is attached to the player in the game scene and used to apply the selected cosmetics.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
