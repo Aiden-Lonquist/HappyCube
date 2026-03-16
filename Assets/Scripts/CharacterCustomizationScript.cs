@@ -44,7 +44,7 @@ public class CharacterCustomizationScript : MonoBehaviour
     {
         // loading sprites for customization screen here
 
-        // for testing if I can auto load sprites
+        // for testing if I can auto load sprites (it worked)
         eyeSprites = Resources.LoadAll<Sprite>(eyeSpriteSheet);
         mouthSprites = Resources.LoadAll<Sprite>(mouthSpriteSheet);
 

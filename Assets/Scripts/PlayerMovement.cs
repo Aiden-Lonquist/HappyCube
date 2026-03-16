@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public GameObject spriteShell;
     public float speed, jumpForce;
     public bool isGrounded;
     public bool useForceMovement;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         if (tempGrounded == false && isGrounded == true)
         {
             Debug.Log("Just landed");
-            //gameObject.transform.GetComponent<SquashAndStretchEffect>().LandingAnimation();
+            spriteShell.GetComponent<SquashAndStretchEffect>().LandingAnimation(rb.velocity.y);
         }
 
         //HorizontalMovement();
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // using jump force of 825 with gravity scale 3 for most testing (can use 750 and 2.5 for easier game)
             rb.AddForce(new Vector2(0, jumpForce));
+            spriteShell.GetComponent<SquashAndStretchEffect>().LandingAnimation(isJumping: true);
         }
 
         //Debug.Log("This is get axis:" + Input.GetAxis("Horizontal"));
@@ -48,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //depricated. Using friction instead of grounded check so that ice tiles work
     private void HorizontalMovement()
     {
         if (!isGrounded)
@@ -84,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     private bool GroundedCheck()
     {
         //Debug.DrawRay(transform.position, -transform.up, Color.green, 1f);
+        //Two raycasts on the bottom left and right corners of the player so that it can still jump even if just the edge is on a platform.
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right/2, -transform.up, 1, layerMask: LayerMask.GetMask("Platforms"));
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position - transform.right / 2, -transform.up, 1, layerMask: LayerMask.GetMask("Platforms"));
         //Debug.Log("hit distance: " + hit.distance);

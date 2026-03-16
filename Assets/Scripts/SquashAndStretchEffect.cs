@@ -159,8 +159,33 @@ public class SquashAndStretchEffect : MonoBehaviour
         looping = shouldLoop;
     }
 
-    public void LandingAnimation()
+    public void LandingAnimation(float velocity = 25, bool isJumping = false)
     {
+        if (isJumping)
+        {
+            maximumScale = 0.75f;
+        }
+        else if (velocity > 0)
+        {
+            Debug.Log("I was here");
+            maximumScale = 1;
+        }
+        else
+        {
+            velocity = Mathf.Abs(velocity);
+            Debug.Log("Initial Velocity: " + velocity);
+            if (velocity > 0.1)
+            {
+                Debug.Log("velocity was greater than 0.1 and will be normalized.");
+                velocity = 0.1f;
+            }
+            velocity /= 0.1f;
+            Debug.Log("adjusted velocity" + velocity);
+            Debug.Log("max scale would be: " + (1.2f + ((maximumScale - 1.2f) * velocity)));
+            maximumScale = 1.2f + ((maximumScale - 1.2f) * velocity);
+            Debug.Log("Max Scale Used: " + maximumScale);
+        }
+        //maximumScale *= (velocity/25); // gives decimal value of velocity out of 25 (max value) to get the % of the squash effect
         CheckForAndStartCoroutine();
     }
 
