@@ -20,7 +20,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool tempGrounded = isGrounded;
         isGrounded = GroundedCheck();
+        if (tempGrounded == false && isGrounded == true)
+        {
+            Debug.Log("Just landed");
+            //gameObject.transform.GetComponent<SquashAndStretchEffect>().LandingAnimation();
+        }
 
         //HorizontalMovement();
         HorizontalMovementNoGroundedCheck();
