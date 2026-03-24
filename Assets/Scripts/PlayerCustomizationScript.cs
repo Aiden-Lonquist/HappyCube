@@ -10,20 +10,23 @@ public class PlayerCustomizationScript : MonoBehaviour
 
     private string eyeSpriteSheet = "Art/HappyCubeEyes";
     private string mouthSpriteSheet = "Art/HappyCubeMouths";
+    private string colourSpriteSheet = "Art/HappyCubeColours";
     private Sprite[] eyeSprites;
     private Sprite[] mouthSprites;
+    private Sprite[] colourSprites;
 
     //public List<CharacterImage> eyesList = new List<CharacterImage>();
     //public List<CharacterImage> mouthList = new List<CharacterImage>();
-    public List<CharacterColour> colourList = new List<CharacterColour>();
+    //public List<CharacterColour> colourList = new List<CharacterColour>();
 
     // Start is called before the first frame update
     void Start()
     {
         eyeSprites = Resources.LoadAll<Sprite>(eyeSpriteSheet);
         mouthSprites = Resources.LoadAll<Sprite>(mouthSpriteSheet);
+        colourSprites = Resources.LoadAll<Sprite>(colourSpriteSheet);
 
-        colour.color = colourList[PlayerPrefs.GetInt("ColourIndex")].colour;
+        colour.sprite = colourSprites[PlayerPrefs.GetInt("ColourIndex")];
         eyes.sprite = eyeSprites[PlayerPrefs.GetInt("EyesIndex")];
         mouth.sprite = mouthSprites[PlayerPrefs.GetInt("MouthIndex")];
     }

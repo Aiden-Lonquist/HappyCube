@@ -24,12 +24,14 @@ public class CharacterCustomizationScript : MonoBehaviour
     // for testing if I can autoload sprites.
     private string eyeSpriteSheet = "Art/HappyCubeEyes";
     private string mouthSpriteSheet = "Art/HappyCubeMouths";
+    private string colourSpriteSheet = "Art/HappyCubeColours";
     public Sprite[] eyeSprites;
     public Sprite[] mouthSprites;
+    public Sprite[] colourSprites;
 
     //public List<CharacterImage> eyesList = new List<CharacterImage>();
     //public List<CharacterImage> mouthList = new List<CharacterImage>();
-    public List<CharacterColour> colourList = new List<CharacterColour>();
+    //public List<CharacterColour> colourList = new List<CharacterColour>();
 
     public TextMeshProUGUI eyesText, mouthText, colourText;
 
@@ -47,6 +49,7 @@ public class CharacterCustomizationScript : MonoBehaviour
         // for testing if I can auto load sprites (it worked)
         eyeSprites = Resources.LoadAll<Sprite>(eyeSpriteSheet);
         mouthSprites = Resources.LoadAll<Sprite>(mouthSpriteSheet);
+        colourSprites = Resources.LoadAll<Sprite>(colourSpriteSheet);
 
         curEyesIndex = PlayerPrefs.GetInt("EyesIndex");
         curMouthIndex = PlayerPrefs.GetInt("MouthIndex");
@@ -56,12 +59,12 @@ public class CharacterCustomizationScript : MonoBehaviour
         // this is just loading the names of the current customizations for the UI
         eyesText.text = curEyesIndex.ToString();
         mouthText.text = curMouthIndex.ToString();
-        colourText.text = colourList[curColourIndex].name;
+        colourText.text = curColourIndex.ToString();
 
         // setting the image for the UI
         characterEyes.GetComponent<SpriteRenderer>().sprite = eyeSprites[curEyesIndex];
         characterMouth.GetComponent<SpriteRenderer>().sprite = mouthSprites[curMouthIndex];
-        characterModel.GetComponent<SpriteRenderer>().color = colourList[curColourIndex].colour;
+        characterModel.GetComponent<SpriteRenderer>().sprite = colourSprites[curColourIndex];
     }
 
     // Update is called once per frame
@@ -116,19 +119,19 @@ public class CharacterCustomizationScript : MonoBehaviour
         Debug.Log("Colour Button Pressed!");
         if (rightPressed)
         {
-            curColourIndex = (curColourIndex + 1) % colourList.Count;
+            curColourIndex = (curColourIndex + 1) % colourSprites.Length;
         }
         else
         {
             curColourIndex--;
             if (curColourIndex < 0)
             {
-                curColourIndex = colourList.Count - 1;
+                curColourIndex = colourSprites.Length - 1;
             }
         }
 
-        colourText.text = colourList[curColourIndex].name;
-        characterModel.GetComponent<SpriteRenderer>().color = colourList[curColourIndex].colour;
+        colourText.text = curColourIndex.ToString();
+        characterModel.GetComponent<SpriteRenderer>().sprite = colourSprites[curColourIndex];
         PlayerPrefs.SetInt("ColourIndex", curColourIndex);
     }
 }

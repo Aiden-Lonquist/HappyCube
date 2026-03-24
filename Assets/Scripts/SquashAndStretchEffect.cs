@@ -161,9 +161,10 @@ public class SquashAndStretchEffect : MonoBehaviour
 
     public void LandingAnimation(float velocity = 25, bool isJumping = false)
     {
+        maximumScale = 2.5f;
         if (isJumping)
         {
-            maximumScale = 0.75f;
+            maximumScale = 0.65f;
         }
         else if (velocity > 0)
         {
