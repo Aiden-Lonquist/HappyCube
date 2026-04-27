@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed, jumpForce;
     public bool isGrounded;
     public bool useForceMovement;
+    public AudioClip jumpSound, landSound, landSound2;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,13 @@ public class PlayerMovement : MonoBehaviour
         if (tempGrounded == false && isGrounded == true)
         {
             Debug.Log("Just landed");
+            if (gameObject.transform.position.y > 88)
+            {
+                SoundManager.instance.PlaySoundClip(landSound2, gameObject.transform, 1f);
+            } else
+            {
+                SoundManager.instance.PlaySoundClip(landSound, gameObject.transform, 0.7f);
+            }
             spriteShell.GetComponent<SquashAndStretchEffect>().LandingAnimation(rb.velocity.y);
         }
 
@@ -37,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // using jump force of 825 with gravity scale 3 for most testing (can use 750 and 2.5 for easier game)
             rb.AddForce(new Vector2(0, jumpForce));
+            SoundManager.instance.PlaySoundClip(jumpSound, gameObject.transform, 0.5f);
             spriteShell.GetComponent<SquashAndStretchEffect>().LandingAnimation(isJumping: true);
         }
 
