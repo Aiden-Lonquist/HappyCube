@@ -45,7 +45,7 @@ public class PlayerMouseDetection : MonoBehaviour
     private void DisableTileMap(GameObject tm)
     {
         tm.GetComponent<TilemapCollider2D>().enabled = false;
-        tm.GetComponent<Tilemap>().color = new Color(1, 1, 1, 0.55f);
+        tm.GetComponent<Tilemap>().color = new Color(0.75f, 0.75f, 0.75f, 0.65f); // default 1, 1 ,1 , 0.55
     }
 
     public void SetIsPlayerColliding(bool playerColliding)

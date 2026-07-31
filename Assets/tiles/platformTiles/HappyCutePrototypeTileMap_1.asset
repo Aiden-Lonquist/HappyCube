@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: HappyCutePrototypeTileMap_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 56375161, guid: 4ee38016b726cd740a4237f3379ba208, type: 3}
+  m_Sprite: {fileID: -150032766, guid: 95f70c6a46e15d34298cb0e5b37e6090, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

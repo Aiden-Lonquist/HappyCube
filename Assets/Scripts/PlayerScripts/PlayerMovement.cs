@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // using jump force of 825 with gravity scale 3 for most testing (can use 750 and 2.5 for easier game)
             rb.AddForce(new Vector2(0, jumpForce));
-            SoundManager.instance.PlaySoundClip(jumpSound, gameObject.transform, 0.5f);
+            SoundManager.instance.PlaySoundClip(jumpSound, gameObject.transform, 0.2f);
             spriteShell.GetComponent<SquashAndStretchEffect>().LandingAnimation(isJumping: true);
         }
 

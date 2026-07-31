@@ -24,7 +24,7 @@ public class CharacterCustomizationScript : MonoBehaviour
     // for testing if I can autoload sprites.
     private string eyeSpriteSheet = "Art/HappyCubeEyes";
     private string mouthSpriteSheet = "Art/HappyCubeMouths";
-    private string colourSpriteSheet = "Art/HappyCubeColours";
+    private string colourSpriteSheet = "Art/HappyCubeColoursWithBorders";
     public Sprite[] eyeSprites;
     public Sprite[] mouthSprites;
     public Sprite[] colourSprites;

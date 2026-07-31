@@ -10,7 +10,7 @@ public class PlayerCustomizationScript : MonoBehaviour
 
     private string eyeSpriteSheet = "Art/HappyCubeEyes";
     private string mouthSpriteSheet = "Art/HappyCubeMouths";
-    private string colourSpriteSheet = "Art/HappyCubeColours";
+    private string colourSpriteSheet = "Art/HappyCubeColoursWithBorders";
     private Sprite[] eyeSprites;
     private Sprite[] mouthSprites;
     private Sprite[] colourSprites;
