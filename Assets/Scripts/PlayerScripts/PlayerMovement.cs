@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = GroundedCheck();
         if (tempGrounded == false && isGrounded == true)
         {
-            Debug.Log("Just landed");
+            //Debug.Log("Just landed");
             if (gameObject.transform.position.y > 88)
             {
                 SoundManager.instance.PlaySoundClip(landSound2, gameObject.transform, 1f);

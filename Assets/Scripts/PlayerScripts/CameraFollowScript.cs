@@ -6,6 +6,7 @@ public class CameraFollowScript : MonoBehaviour
 {
     public GameObject player;
     public float cameraFollowSpeed;
+    public float followBufferUp, followBufferDown;
     private float smoothTime = 0.05f;
     private Vector3 offset = new Vector3(0, 0, -10);
     private Vector3 velocity = Vector3.zero;
@@ -19,7 +20,7 @@ public class CameraFollowScript : MonoBehaviour
     void LateUpdate()
     {
         //InstantFollow(1);
-        FollowByDist();
+        FollowByDist2();
         //SmoothFollow();
     }
 
@@ -70,6 +71,20 @@ public class CameraFollowScript : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
         }*/
+    }
+
+    public void FollowByDist2()
+    {
+        float camDist = player.transform.position.y - gameObject.transform.position.y;
+
+        if (camDist >= followBufferUp) // distance camera is from player when moving up
+        {
+            InstantFollow(-followBufferUp);
+        }
+        else if (camDist <= -followBufferDown) // distance camera is from player when moving down
+        {
+            InstantFollow(followBufferDown);
+        }
     }
 
     private void SmoothFollow()
